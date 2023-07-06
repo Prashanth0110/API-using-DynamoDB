@@ -1,0 +1,21 @@
+{ 
+    "ArrTime": "06:45", 
+    "docType": "OpsFltLeg::SFO::1::SIN::0::0", 
+    "ArrGate": "HOLD", 
+    "ArrDate": "23MAY22", 
+    "Arrival": "SIN", 
+    "DepTime": "22:45", 
+    "LclDepDtm": "30MAR22T22:45", 
+    "FlightLegKey": "UA::0001::1::30MAR22", 
+    "origOccurNbr": "0", 
+    "CarrIataCd": "UA", 
+    "Departure": "SFO", 
+    "DepDate": "30MAR22", 
+    "LegNum": "01", 
+    "DepGate": "HOLD", 
+    "FlightNumber": "0001", 
+    "ActiveInd": "1", 
+    "intVarNum": "01", 
+    "LclArrDtm": "23MAY22T06:45", 
+    "SeatConfig": "J48O21Y188" 
+}

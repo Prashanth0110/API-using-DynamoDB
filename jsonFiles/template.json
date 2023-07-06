@@ -1,0 +1,151 @@
+{
+  "AWSTemplateFormatVersion": "2010-09-09",
+  "Resources": {
+    "bbtFlifoData4": {
+      "Type": "AWS::DynamoDB::Table",
+      "Properties": {
+        "KeySchema": [
+          {
+            "AttributeName": "FlightLegKey",
+            "KeyType": "HASH"
+          },
+          {
+            "AttributeName": "docType",
+            "KeyType": "RANGE"
+          }
+        ],
+        "AttributeDefinitions": [
+          {
+            "AttributeName": "FlightLegKey",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "docType",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "FlightNumber",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "LclDepDtm",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "CarrIataCd",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "Departure",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "Arrival",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "LclArrDtm",
+            "AttributeType": "S"
+          }
+        ],
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "GSI-FltNbr-SchedDepdt",
+            "KeySchema": [
+              {
+                "AttributeName": "FlightNumber",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "LclDepDtm",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          },
+          {
+            "IndexName": "GSI-CarrCd-SchedDepDt",
+            "KeySchema": [
+              {
+                "AttributeName": "CarrIataCd",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "LclDepDtm",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "Departure",
+                "Arrival",
+                "docType",
+                "DepGate",
+                "ArrGate",
+                "FlightNumber",
+                "DepDate"
+              ]
+            }
+          },
+          {
+            "IndexName": "GSI-Orig-SchedDepDt",
+            "KeySchema": [
+              {
+                "AttributeName": "Departure",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "LclDepDtm",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "docType",
+                "FlightNumber",
+                "DepDate",
+                "DepGate",
+                "ArrGate",
+                "CarrIataCd"
+              ]
+            }
+          },
+          {
+            "IndexName": "GSI-Dest-SchedArrDt",
+            "KeySchema": [
+              {
+                "AttributeName": "Arrival",
+                "KeyType": "HASH"
+              },
+              {
+                "AttributeName": "LclArrDtm",
+                "KeyType": "RANGE"
+              }
+            ],
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "docType",
+                "FlightNumber",
+                "ArrDate",
+                "Departure",
+                "LclDepDtm",
+                "DepGate",
+                "ArrGate"
+              ]
+            }
+          }
+        ],
+        "BillingMode": "PAY_PER_REQUEST",
+        "TableName": "bbt-flifo-data4"
+      }
+    }
+  }
+}

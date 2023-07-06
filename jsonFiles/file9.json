@@ -1,0 +1,1828 @@
+{
+    "ModelName": "test3",
+    "ModelMetadata": {
+      "Author": "Prashanth Reddy",
+      "DateCreated": "Apr 28, 2021, 8:43 PM",
+      "DateLastModified": "Jun 30, 2021, 12:07 PM",
+      "Description": "",
+      "AWSService": "Amazon DynamoDB",
+      "Version": "3.0"
+    },
+    "DataModel": [
+      {
+        "TableName": "bbt-flifo-data3",
+        "BillingMode": "PAY_PER_REQUEST",
+        "KeyAttributes": {
+          "PartitionKey": {
+            "AttributeName": "FlightLegKey",
+            "AttributeType": "S"
+          },
+          "SortKey": {
+            "AttributeName": "docType",
+            "AttributeType": "S"
+          }
+        },
+        "NonKeyAttributes": [
+          {
+            "AttributeName": "CarrIataCd",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "FlightNumber",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "intVarNum",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "LegNum",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "Departure",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "Arrival",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "DepDate",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "DepTime",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "LclDepDtm",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "ArrTime",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "ArrDate",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "LclArrDtm",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "origOccurNbr",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "SeatConfig",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "DepGate",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "ArrGate",
+            "AttributeType": "S"
+          },
+          {
+            "AttributeName": "ActiveInd",
+            "AttributeType": "S"
+          }
+          ,
+          {
+            "AttributeName": "LegNumm",
+            "AttributeType": "S"
+          }
+        ],
+        "GlobalSecondaryIndexes": [
+          {
+            "IndexName": "GSI-FltNbr-SchedDepdt",
+            "KeyAttributes": {
+              "PartitionKey": {
+                "AttributeName": "FlightNumber",
+                "AttributeType": "S"
+              },
+              "SortKey": {
+                "AttributeName": "LclDepDtm",
+                "AttributeType": "S"
+              }
+            },
+            "Projection": {
+              "ProjectionType": "ALL"
+            }
+          },
+          {
+            "IndexName": "GSI-CarrCd-SchedDepDt",
+            "KeyAttributes": {
+              "PartitionKey": {
+                "AttributeName": "CarrIataCd",
+                "AttributeType": "S"
+              },
+              "SortKey": {
+                "AttributeName": "LclDepDtm",
+                "AttributeType": "S"
+              }
+            },
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "Departure",
+                "Arrival",
+                "docType",
+                "DepGate",
+                "ArrGate",
+                "FlightNumber",
+                "DepDate"
+              ]
+            }
+          },
+          {
+            "IndexName": "GSI-Orig-SchedDepDt",
+            "KeyAttributes": {
+              "PartitionKey": {
+                "AttributeName": "Departure",
+                "AttributeType": "S"
+              },
+              "SortKey": {
+                "AttributeName": "LclDepDtm",
+                "AttributeType": "S"
+              }
+            },
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "docType",
+                "FlightNumber",
+                "DepDate",
+                "DepGate",
+                "ArrGate",
+                "CarrIataCd"
+              ]
+            }
+          },
+          {
+            "IndexName": "GSI-Dest-SchedArrDt",
+            "KeyAttributes": {
+              "PartitionKey": {
+                "AttributeName": "Arrival",
+                "AttributeType": "S"
+              },
+              "SortKey": {
+                "AttributeName": "LclArrDtm",
+                "AttributeType": "S"
+              }
+            },
+            "Projection": {
+              "ProjectionType": "INCLUDE",
+              "NonKeyAttributes": [
+                "FlightLegKey",
+                "docType",
+                "FlightNumber",
+                "ArrDate",
+                "Departure",
+                "LclDepDtm",
+                "DepGate",
+                "ArrGate"
+              ]
+            }
+          }
+        ],
+        "TableData": [
+ {
+    "FlightLegKey": {
+       "S": "UA::0001::1::30MAR22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "01"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "30MAR22"
+    },
+    "ArrDate": {
+       "S": "23MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "30MAR22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "23MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::30MAR22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "01"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "30MAR22"
+    },
+    "ArrDate": {
+       "S": "23MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "30MAR22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "23MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::02APR22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "02"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "02APR22"
+    },
+    "ArrDate": {
+       "S": "21MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "02APR22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "21MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::02APR22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "02"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "02APR22"
+    },
+    "ArrDate": {
+       "S": "21MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "02APR22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "21MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::25MAY22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "03"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "25MAY22"
+    },
+    "ArrDate": {
+       "S": "25MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "25MAY22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "25MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::25MAY22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "03"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:45"
+    },
+    "DepDate": {
+       "S": "25MAY22"
+    },
+    "ArrDate": {
+       "S": "25MAY22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "25MAY22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "25MAY22T06:45"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::27MAY22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "04"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "27MAY22"
+    },
+    "ArrDate": {
+       "S": "20JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "27MAY22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "20JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::27MAY22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "04"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "27MAY22"
+    },
+    "ArrDate": {
+       "S": "20JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "27MAY22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "20JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::28MAY22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "05"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "28MAY22"
+    },
+    "ArrDate": {
+       "S": "18JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "28MAY22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "18JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::28MAY22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "05"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "28MAY22"
+    },
+    "ArrDate": {
+       "S": "18JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "28MAY22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "18JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::22JUN22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "06"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "22JUN22"
+    },
+    "ArrDate": {
+       "S": "22JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "22JUN22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "22JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::22JUN22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "06"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:00"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "22JUN22"
+    },
+    "ArrDate": {
+       "S": "22JUN22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "22JUN22T23:00"
+    },
+    "LclArrDtm": {
+       "S": "22JUN22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::24JUN22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "07"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:05"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "24JUN22"
+    },
+    "ArrDate": {
+       "S": "07SEP22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "24JUN22T23:05"
+    },
+    "LclArrDtm": {
+       "S": "07SEP22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::24JUN22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "07"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:05"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "24JUN22"
+    },
+    "ArrDate": {
+       "S": "07SEP22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "24JUN22T23:05"
+    },
+    "LclArrDtm": {
+       "S": "07SEP22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::08SEP22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "08"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "08SEP22"
+    },
+    "ArrDate": {
+       "S": "23OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "08SEP22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "23OCT22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::08SEP22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "08"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "08SEP22"
+    },
+    "ArrDate": {
+       "S": "23OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "08SEP22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "23OCT22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::24OCT22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "09"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "24OCT22"
+    },
+    "ArrDate": {
+       "S": "30OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "24OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "30OCT22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::24OCT22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "09"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "24OCT22"
+    },
+    "ArrDate": {
+       "S": "30OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "24OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "30OCT22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::28OCT22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "10"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:00"
+    },
+    "DepDate": {
+       "S": "28OCT22"
+    },
+    "ArrDate": {
+       "S": "28OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "28OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "28OCT22T07:00"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::28OCT22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "10"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:00"
+    },
+    "DepDate": {
+       "S": "28OCT22"
+    },
+    "ArrDate": {
+       "S": "28OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "28OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "28OCT22T07:00"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::29OCT22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "11"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:35"
+    },
+    "ArrTime": {
+       "S": "08:00"
+    },
+    "DepDate": {
+       "S": "29OCT22"
+    },
+    "ArrDate": {
+       "S": "29OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "29OCT22T23:35"
+    },
+    "LclArrDtm": {
+       "S": "29OCT22T08:00"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::29OCT22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "11"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "23:35"
+    },
+    "ArrTime": {
+       "S": "08:00"
+    },
+    "DepDate": {
+       "S": "29OCT22"
+    },
+    "ArrDate": {
+       "S": "29OCT22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "29OCT22T23:35"
+    },
+    "LclArrDtm": {
+       "S": "29OCT22T08:00"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::31OCT22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "12"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "31OCT22"
+    },
+    "ArrDate": {
+       "S": "05NOV22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "31OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "05NOV22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::31OCT22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "12"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "06:15"
+    },
+    "DepDate": {
+       "S": "31OCT22"
+    },
+    "ArrDate": {
+       "S": "05NOV22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "31OCT22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "05NOV22T06:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::06NOV22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "13"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:15"
+    },
+    "DepDate": {
+       "S": "06NOV22"
+    },
+    "ArrDate": {
+       "S": "20NOV22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "06NOV22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "20NOV22T07:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::06NOV22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "13"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:15"
+    },
+    "DepDate": {
+       "S": "06NOV22"
+    },
+    "ArrDate": {
+       "S": "20NOV22"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "06NOV22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "20NOV22T07:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::21NOV22"
+    },
+    "docType": {
+       "S": "OpsFltLeg::SFO::1::SIN::0::0"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "14"
+    },
+    "LegNum": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:15"
+    },
+    "DepDate": {
+       "S": "21NOV22"
+    },
+    "ArrDate": {
+       "S": "09MAR23"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "21NOV22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "09MAR23T07:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ },{
+    "FlightLegKey": {
+       "S": "UA::0001::1::21NOV22"
+    },
+    "docType": {
+       "S": "SchedFltLeg::SFO::SIN::1"
+    },
+    "ActiveInd": {
+       "S": "1"
+    },
+    "CarrIataCd": {
+       "S": "UA"
+    },
+    "FlightNumber": {
+       "S": "0001"
+    },
+    "intVarNum": {
+       "S": "14"
+    },
+    "LegNumm": {
+       "S": "01"
+    },
+    "Departure": {
+       "S": "SFO"
+    },
+    "Arrival": {
+       "S": "SIN"
+    },
+    "DepTime": {
+       "S": "22:45"
+    },
+    "ArrTime": {
+       "S": "07:15"
+    },
+    "DepDate": {
+       "S": "21NOV22"
+    },
+    "ArrDate": {
+       "S": "09MAR23"
+    },
+    "DepGate": {
+       "S": "HOLD"
+    },
+    "ArrGate": {
+       "S": "HOLD"
+    },
+    "LclDepDtm": {
+       "S": "21NOV22T22:45"
+    },
+    "LclArrDtm": {
+       "S": "09MAR23T07:15"
+    },
+    "origOccurNbr": {
+       "S": "0"
+    },
+    "SeatConfig": {
+       "S": "J48O21Y188"
+    }
+ }
+
+],
+"DataAccess": {
+  "MySql": {}
+}
+}
+]
+}

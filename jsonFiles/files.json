@@ -1,0 +1,25 @@
+{
+      "stn": "0001",
+      "itnV": "01",
+      "legN": "01",
+      "ItStDate": "30MAR22",
+      "ItEndDate": "23MAY22",
+      "sdep": " SF",
+      "sarr": "SIN"
+}{
+      "stn": "0001",
+      "itnV": "02",
+      "legN": "01",
+      "ItStDate": "02APR22",
+      "ItEndDate": "21MAY22",
+      "sdep": " SF",
+      "sarr": "SIN"
+}{
+      "stn": "0001",
+      "itnV": "03",
+      "legN": "01",
+      "ItStDate": "25MAY22",
+      "ItEndDate": "25MAY22",
+      "sdep": " SF",
+      "sarr": "SIN"
+}
